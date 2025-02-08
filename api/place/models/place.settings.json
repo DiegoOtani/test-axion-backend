@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "places",
+  "info": {
+    "name": "place"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "link": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
