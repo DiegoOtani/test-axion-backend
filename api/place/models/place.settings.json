@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "places",
   "info": {
-    "name": "place"
+    "name": "place",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -18,6 +19,20 @@
     "link": {
       "type": "string",
       "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "country": {
+      "type": "string",
+      "required": true
+    },
+    "language": {
+      "type": "string",
+      "required": true
+    },
+    "population": {
+      "type": "string"
     }
   }
 }
