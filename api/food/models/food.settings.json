@@ -19,6 +19,20 @@
     "link": {
       "type": "string",
       "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "category": {
+      "type": "string",
+      "required": true
+    },
+    "calories": {
+      "type": "integer",
+      "required": true
+    },
+    "cooking_time": {
+      "type": "string"
     }
   }
 }
