@@ -18,7 +18,7 @@
 1. **Clone o repositório**  
    ```sh
    git clone https://github.com/DiegoOtani/test-axion-backend.git
-   cd axion-backend
+   cd test-axion-backend
    ```
 
 2. **Instale as dependências**
