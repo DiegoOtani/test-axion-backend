@@ -1,63 +1,81 @@
-# Desafio técnico Axion
+# API do Projeto de teste técnico da AxionCompany
 
-## API para o teste de pessoas desenvolvedoras!
+## 📌 Considerações
+* Este backend foi desenvolvido como parte de um desafio técnico da empresa AxionCompany.
+* O projeto é uma continuidade da API disponibilizada para o teste de desenvolvedores em https://github.com/AxionCompany/axion-test
+* Projeto frontend pode ser acessado em: https://github.com/DiegoOtani/test-axion-frontend
 
-Este projeto foi criado com o objetivo de testar as habilidade técnicas, capacidades de aprendizado e como um candidato(a) a desenvolvedor(a) lida com os desafios propostos!
+## 🚀 Tecnologias Utilizadas
 
-Queremos que você clone este projeto, rode ele localmente e se comunique com a API para coletar os dados e compor as páginas.
+- [Strapi](https://strapi.io/)
+- [Node.js](https://nodejs.org/)
+- [SQLite](https://www.sqlite.org/) 
 
-> Tá, mas como usar a API? Como ela foi feita? E o banco de dados?
+## 📦 Instalação
 
-Como citamos no arquivo que mandamos com o teste, a API foi desenvolvida em Node.Js utilizando Strapi, por isso a tarefa de criar um usuário e realizar login ficará mais fácil! 
+**Para instalar o projeto é necessário NodeJs (>=14)**
 
-Dê uma olhada na documentação do Strapi e no que dizem nos fórums de dúvida por ai. Já que utilizamos **NodeJs (>=14)**, você vai precisar tê-lo instalado em sua máquina também!
+1. **Clone o repositório**  
+   ```sh
+   git clone https://github.com/DiegoOtani/test-axion-backend.git
+   cd axion-backend
+   ```
 
-Para executar o servidor você vai precisar:
-- abrir o terminal na pasta onde você clonou a API;
-- rodar o comando `npm install` para instalar as dependências do projeto;
-- rodar o comando `npm run build` para gerar a build do projeto;
-- rodar o comando  `npm run develop` para executar a aplicação em modo de **desenvolvimento**;
+2. **Instale as dependências**
+    ```sh
+    npm install
+    ```
 
-Se tudo deu certo, você deve ver no console as informações do servidor headless.
+3. **Configure as variáveis de ambiente**
+   * Crie um arquivo **.env** na raíz do projeto e adicione
+   ```sh
+    PORT=1337
+    JWT_SECRET="sua_chave_secreta"
+   ```
 
-E ai boa, a API está rodando na sua máquina!
+4. **Execute o Strapi**
+  * Executar a aplicação em modo de desenvolvimento
+    ```sh
+    npm run develop
+    ```
 
-Na API deverá configurar as Collections para que sejam a representação dos dados de Pessoas, Comidas e Locais. Que deverão ser retornados em arrays em json, sendo que cada objeto representa um item que deve aparecer na lista.
+  * Gerar a build do projeto:
+    ```sh
+    npm run build
+    ```
 
-Os objetos estarão no formato:
-```json
-{
-  "name": "",
-  "link": ""
-}
-```
-
-O campo 'name' é o dado a ser colocado sobre a imagem nos itens das listas. O campo 'link" é uma url para a imagem que deve ficar no background do card daquele item na lista. Estes links só funcionarão caso o servidor esteja rodando.
-
-Estes dados estão todos salvos em um banco local SQLite que já se comunica com a API, portanto você não precisa se preocupar com essa parte.
-
-O banco já possui também um usuário cadastrado com as seguintes credenciais:
-
+5. **Usuário admin cadastrado no Strapi:**
+    ```
     user: axioner@axion.company
     senha: Axioner123
+    ```
 
-Se você travar, lembre-se que outras pessoas já passaram pelo mesmo problema que você, deve ter algo lá nos fóruns/stackoverflow que te ajude a resolver a treta, não desista! You can do this!
+## 🔗 Rotas da API
 
-## ESPECIFICAÇÕES DE LAYOUT:
+### 🛠 Autenticação
 
-Layout do protótipo para o teste: https://marvelapp.com/35gh79g
-  
-No link a seguir https://bit.ly/3oIQyCC dentro da pasta "imgs" você encontra todos os arquivos que servirão de imagem de fundo para os cards das páginas de lista. Encontra também uma pasta nomeada "assets" e essa você deve copiar para o seu projeto do front para ter a imagem de fundo que usamos no layout e alguns ícones também.
+| Método | Rota                     | Descrição                 | Corpo da Requisição              |
+|--------|---------------------------|---------------------------|----------------------------------|
+| POST   | `/auth/local`         | Login de usuário         | `{ "identifier": "email", "password": "senha" }` |
+| POST   | `/auth/local/register`| Registro de usuário      | `{ "username": "nome", "email": "email", "password": "senha" }` |
 
-Seria interessante a ordenação crescente e decrescente dos dados de cada Collection no Front-end. Mas isto fica a seu encargo.
+### 🍽️ Alimentos
 
-Os códigos em hexa das cores que usamos no layout:
+| Método | Rota                     | Descrição                  | Requer Autenticação |
+|--------|---------------------------|----------------------------|---------------------|
+| GET    | `/foods`              | Lista todos os alimentos   | ✅ Sim |
+| GET    | `/foods/:id`          | Retorna um alimento        | ✅ Sim |
 
-        #4A4A4A
-        #AE23A9
-        #DC4E1B
-        #9B9B9B
-        #FFFFFF
-        #F9F9F9
+### ✈ Lugares
 
-A fonte usada no layout (repare que existem textos usando a versão Light, Semibold e Bold): https://fonts.google.com/specimen/Open+Sans
+| Método | Rota                     | Descrição                  | Requer Autenticação |
+|--------|---------------------------|----------------------------|---------------------|
+| GET    | `/places`              | Lista todos os lugares   | ✅ Sim |
+| GET    | `/places/:id`          | Retorna um lugar        | ✅ Sim |
+
+### 🙋🏻‍♂️ Pessoas
+
+| Método | Rota                     | Descrição                  | Requer Autenticação |
+|--------|---------------------------|----------------------------|---------------------|
+| GET    | `/people`              | Lista todas as pessoas   | ✅ Sim |
+| GET    | `/people/:id`          | Retorna uma pessoa        | ✅ Sim |
